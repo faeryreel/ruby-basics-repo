@@ -13,8 +13,8 @@ months = {
   december: 31,
 }
 
-months.each { |month, number_of_days|
+months.each do |month, number_of_days|
   if number_of_days == 30
     puts month
   end
-}
+end
