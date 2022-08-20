@@ -15,14 +15,14 @@ class Route
     if @stations.index(station) != 0 && @stations.index(station) != @stations.size - 1
       @stations.delete(station)
     elsif @stations.index(station) == 0
-      puts "Удалить начальную станцию нельзя!"
+      puts "You can't delete the initial station!"
     else
-      puts "Удалить конечную станцию нельзя!"
+      puts "You can't delete the terminal station!"
     end
   end
 
   def list_stations
-    puts "Список станций в маршруте:\n\n"
+    puts "All stations in the route:\n\n"
     @stations.each { |station| puts station.name}
   end
 end

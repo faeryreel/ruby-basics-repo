@@ -20,7 +20,7 @@ class Train
     if @speed == 0
       @number_of_cars += 1
     else
-      puts "Невозможно прицепить вагон, так как поезд движется!"
+      puts "You can't add a car because the train is moving!"
     end
   end
 
@@ -28,7 +28,7 @@ class Train
     if @speed == 0
       @number_of_cars -= 1
     else
-      puts "Невозможно отцепить вагон, так как поезд движется!"
+      puts "You can't delete a car because the train is moving!"
     end
   end
 
@@ -49,7 +49,7 @@ class Train
         @next_station = nil
       end
     else
-      puts "Поезд не может переместиться вперед, так как находится на конечной станции маршрута."
+      puts "The train can't move forward because it is at the terminal station of the route."
     end
   end
 
@@ -63,7 +63,7 @@ class Train
         @next_station = nil
       end
     else
-      puts "Поезд не может переместиться назад, так как находится на начальной станции маршрута."
+      puts "The train can't move backwards because it is at the initial station of the route."
     end
   end
 end
