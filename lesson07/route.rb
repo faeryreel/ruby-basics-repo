@@ -8,8 +8,8 @@ class Route
     @stations = []
     @stations[0] = initial_station
     @stations[1] = terminal_station
-    self.register_instance
     validate!
+    self.register_instance
   end
 
   def add_station(station)

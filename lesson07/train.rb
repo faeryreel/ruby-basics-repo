@@ -15,11 +15,11 @@ class Train
   def initialize(number, manufacturer_name)
     @number = number
     @manufacturer_name = manufacturer_name
+    validate!
     @cars = []
     @speed = 0
     @@trains << self
     self.register_instance
-    validate!
   end
 
   def accelerate(speed)
