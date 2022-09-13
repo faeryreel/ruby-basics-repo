@@ -1,10 +1,6 @@
 class CargoTrain < Train
   TYPE = "Cargo"
 
-  def get_type
-    TYPE
-  end
-
   def add_car(car)
     if is_stopped? && is_cargo_car?(car)
       add_car!(car)
@@ -24,6 +20,6 @@ class CargoTrain < Train
 =end
 
   def is_cargo_car?(car)
-    car.get_car_type == "Cargo"
+    car.class::CAR_TYPE == "Cargo"
   end
 end

@@ -181,7 +181,7 @@ class Main
   def list_trains
     print "\nEnter the name of the station: "
     station_name = gets.chomp
-    find_station_by_name(station_name).list_trains { |train| puts "Train #: #{train.number}. Train type: #{train.get_type}. Number of cars: #{train.cars.size}." }
+    find_station_by_name(station_name).list_trains { |train| puts "Train #: #{train.number}. Train type: #{train.class::TYPE}. Number of cars: #{train.cars.size}." }
     # print "Enter the type of trains you'd like to list (all, passenger or cargo): "
     # type = gets.chomp.capitalize
     # if type == "All"

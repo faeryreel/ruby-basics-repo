@@ -1,10 +1,6 @@
 class PassengerTrain < Train
   TYPE = "Passenger"
 
-  def get_type
-    TYPE
-  end
-
   def add_car(car)
     if is_stopped? && is_passenger_car?(car)
       add_car!(car)
@@ -24,6 +20,6 @@ class PassengerTrain < Train
 =end
 
   def is_passenger_car?(car)
-    car.get_car_type == "Passenger"
+    car.class::CAR_TYPE == "Passenger"
   end
 end

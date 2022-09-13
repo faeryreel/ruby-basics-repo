@@ -34,7 +34,7 @@ class Station
   def trains_by_type(type)
     puts "\nList of all #{type.downcase} trains at the station:\n\n"
     if no_trains? == false && (is_cargo?(type) || is_passenger?(type))
-      @trains.each { |train| puts "#{train.get_type} train #{train.number}." if is_of_certain_type?(train, type) }
+      @trains.each { |train| puts "#{train.class::TYPE} train #{train.number}." if is_of_certain_type?(train, type) }
       no_trains_message(type)
     elsif no_trains?
       puts "There are no trains at the station."
@@ -88,7 +88,7 @@ class Station
 =end 
 
   def is_of_certain_type?(train, type)
-    train.get_type == type
+    train.class::TYPE == type
   end
 
 =begin
