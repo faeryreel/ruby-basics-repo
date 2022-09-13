@@ -124,12 +124,12 @@ class Main
     manufacturer_name = gets.chomp
     if car_type.capitalize == "Passenger"
       print "Enter number of seats in the car: "
-      total_seats = gets.chomp.to_i
-      car = PassengerCar.new(car_number, manufacturer_name, total_seats)
+      total_place = gets.chomp.to_i
+      car = PassengerCar.new(car_number, manufacturer_name, total_place)
     else
       print "Enter car volume: "
-      total_volume = gets.chomp.to_i
-      car = CargoCar.new(car_number, manufacturer_name, total_volume)
+      total_place = gets.chomp.to_i
+      car = CargoCar.new(car_number, manufacturer_name, total_place)
     end
     print "Enter the number of the train: "
     train_number = gets.chomp
@@ -194,13 +194,7 @@ class Main
   def list_cars
     print "\nEnter the number of the train: "
     train_number = gets.chomp
-    @trains[find_train_by_number(train_number)].list_cars do |car|
-      if car.get_car_type == "Passenger"
-        puts "Car #: #{car.number}. Car type: #{car.get_car_type}. Seats empty: #{car.get_empty_seats}. Seats taken: #{car.get_taken_seats}."
-      else
-        puts "Car #: #{car.number}. Car type: #{car.get_car_type}. Volume empty: #{car.get_empty_volume}. Volume taken: #{car.get_taken_volume}."
-      end
-    end
+    @trains[find_train_by_number(train_number)].list_cars { |car| puts "Car #: #{car.number}. Car type: #{car.class::CAR_TYPE}. #{car.class::UNITS} empty: #{car.free_place}. #{car.class::UNITS} taken: #{car.used_place}." }
   end
 
   def take_seat_or_volume
@@ -208,13 +202,13 @@ class Main
     train_number = gets.chomp
     print "Enter the number of the car: "
     car_number = gets.chomp.to_i
-    if @trains[find_train_by_number(train_number)].get_type == "Passenger"
-      find_car_by_number(@trains[find_train_by_number(train_number)], car_number).take_seat
+    if @trains[find_train_by_number(train_number)].class::TYPE == "Passenger"
+      find_car_by_number(@trains[find_train_by_number(train_number)], car_number).take_place
       print "\nThe seat is successfully taken."
     else
       print "Enter the volume you'd like to take: "
       volume = gets.chomp.to_i
-      find_car_by_number(@trains[find_train_by_number(train_number)], car_number).take_volume(volume)
+      find_car_by_number(@trains[find_train_by_number(train_number)], car_number).take_place(volume)
       print "\nThe volume is successfully taken."
     end
   end
